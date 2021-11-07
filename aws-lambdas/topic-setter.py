@@ -1,0 +1,17 @@
+import json
+from types import SimpleNamespace
+import boto3
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('TABLE_NAME')
+
+
+def lambda_handler(event, context):
+    body = json.loads(event['body'], object_hook=lambda d: SimpleNamespace(**d))
+
+
+def send_response(topics):
+    return {
+        'statusCode': 200,
+        'body': json.dumps(topics)
+    }
