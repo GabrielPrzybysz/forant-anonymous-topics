@@ -12,12 +12,13 @@ def lambda_handler(event, context):
     topic_id = body.Id
 
     if topic_id == '/':
-        return send_response(get_all_topics_titles())
+        return send_response(get_all_topics_titles(), 200)
 
+    return send_response(get_single_topic(topic_id), 200)
 
-def send_response(topics):
+def send_response(topics, status):
     return {
-        'statusCode': 200,
+        'statusCode': status,
         'body': json.dumps(topics)
     }
 
@@ -27,6 +28,12 @@ def get_all_topics_titles():
     titles = []
 
     for item in items:
-        titles.append(item['Id'])
+        titles.append(item)
 
     return titles
+
+
+def get_single_topic(id):
+    topic = table.get_item(Key={'Id': id})
+
+    return topic
