@@ -20,12 +20,29 @@ namespace fortan.Pages
             _logger = logger;
         }
 
-        public List<string> TopicsTitles;
+        [BindProperty]
+        public string Nickname { get; set; } = "";
+        
+        [BindProperty]
+        public string Title { get; set; } = "";
+        
+        [BindProperty]
+        public string Text { get; set; } = "";
         
 
+        public List<Topic> AllTopics;
+        
         public async Task OnGet()
         {
-            TopicsTitles = await Services.GetAllTitles();
+            AllTopics = await Services.GetAllTopics();
+        }
+
+        public async Task<ActionResult> OnPost()
+        {
+            string id = Guid.NewGuid().ToString("N");
+            await Services.PutTopic(new Topic(id, Nickname, Title, Text));
+
+            return RedirectToPage("/Index");
         }
     }
 }

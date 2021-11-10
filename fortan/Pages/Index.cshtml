@@ -10,69 +10,28 @@
     <br>
 </div>
 
-<form method="POST">
+<form method="post">
 
-    <input class="form-control form-control-lg" type="text" placeholder="Your Nick">
+    <input class="form-control form-control-lg" type="text" asp-for="Nickname" placeholder="Your Nick">
     <br>
     <br>
-    <input class="form-control" type="text" placeholder="Title">
+    <input class="form-control" type="text" asp-for="Title" placeholder="Title">
     <br>
     <br>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Talk about your topic"></textarea>
+    <textarea class="form-control" asp-for="Text" rows="5" placeholder="Talk about your topic"></textarea>
     <br>
     <br>
-    <button type="button" class="btn btn-primary">Send topic</button>
+    
+    <input type="submit" class="btn btn-primary" value="Send topic">
 </form>
 
 <div style="display: inline-block">
     @{
-        for (int i = 0; i < @Model.TopicsTitles.Count; i++)
+        for (int i = 0; i < @Model.AllTopics.Count; i++)
         {
             <br>
             <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">Antom said: @Model.TopicsTitles[i]</a>
-            <br>
-            <br>
- 
+            <a style="font-size: 18px" href="" onclick="alert(1)">@Model.AllTopics[i].Author said: @Model.AllTopics[i].Title</a>
         }
     }
 </div>
