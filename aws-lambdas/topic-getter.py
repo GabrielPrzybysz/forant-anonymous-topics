@@ -14,8 +14,6 @@ def lambda_handler(event, context):
     if topic_id == '/':
         return send_response(get_all_topics_titles(), 200)
 
-    return send_response(get_single_topic(topic_id), 200)
-
 def send_response(topics, status):
     return {
         'statusCode': status,
@@ -31,5 +29,3 @@ def get_all_topics_titles():
         titles.append(item)
 
     return titles
-
-
