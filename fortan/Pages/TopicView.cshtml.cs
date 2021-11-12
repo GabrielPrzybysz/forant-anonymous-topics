@@ -6,14 +6,15 @@ namespace fortan.Pages
 {
     public class TopicView : PageModel
     {
-        public Topic SelectedTopic;
-
         [BindProperty] 
         public string Comment { get; set; }
-
-        public void OnGet()
+        
+        public async Task<ActionResult> OnPost()
         {
-            SelectedTopic = Services.SelectedTopic;
+            Services.SelectedTopic.Comments.Add(Comment);
+            await Services.Comment();
+
+            return RedirectToPage("TopicView");
         }
     }
 }

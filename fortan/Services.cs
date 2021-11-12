@@ -56,6 +56,22 @@ namespace fortan
 
             await request.GetResponseAsync();
         }
+        
+        public static async Task Comment()
+        {
+            WebRequest request = WebRequest.Create ("URL");
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.Headers.Add("x-api-key","KEY");
+            
+            using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+            {
+                string json = "{\"Id\":\"" + SelectedTopic.Id + "\", \"Comments\":" + JsonConvert.SerializeObject(SelectedTopic.Comments) + "}";
+                await streamWriter.WriteAsync(json);
+            }
+
+            await request.GetResponseAsync();
+        }
     }
     
 }
