@@ -13,12 +13,12 @@
 
 <form method="post" style="display: inline-grid">
 
-    <div style="text-align: center; align-content: center" >
-        <input style="width: 100%; color: black !important;" class="form-control form-control-lg" type="text" asp-for="Nickname" placeholder="Your Nick">
+    <div style="text-align: center; align-content: center">
+        <input required style="width: 100%; color: black !important;" class="form-control form-control-lg" type="text" asp-for="Nickname" placeholder="Your Nick">
         <br>
-        <input style="width: 100%; color: black !important;" class="form-control" type="text" asp-for="Title" placeholder="Title">
+        <input required style="width: 100%; color: black !important;" class="form-control" type="text" asp-for="Title" placeholder="Title">
         <br>
-        <textarea style="width: 100%; color: black !important;" class="form-control" asp-for="Text" rows="10" placeholder="Talk about your topic"></textarea>
+        <textarea required style="width: 100%; color: black !important;" class="form-control" asp-for="Text" rows="10" placeholder="Talk about your topic"></textarea>
         <br>
     </div>
     
