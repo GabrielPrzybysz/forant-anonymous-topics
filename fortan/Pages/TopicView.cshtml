@@ -9,15 +9,15 @@
 
 <html>
 <head>
-    <title>@Services.SelectedTopic.Title</title>
+    <title>@Model.SelectedTopic.Title</title>
 </head>
 <body>
 <div>
-    <h1>@Services.SelectedTopic.Title</h1>
+    <h1>@Model.SelectedTopic.Title</h1>
 
     <br>
     <br>
-    @foreach (string comment in @Services.SelectedTopic.Comments)
+    @foreach (string comment in @Model.SelectedTopic.Comments)
     {
         <h5> Anonymous said: @comment </h5>
         <br>

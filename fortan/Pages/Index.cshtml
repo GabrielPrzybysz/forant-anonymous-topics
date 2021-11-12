@@ -28,13 +28,13 @@
 <div style="display: inline-block">
     <form METHOD="post">
     @{
-        for (int i = 0; i < @Services.AllTopics.Count; i++)
+        for (int i = 0; i < @Model.AllTopics.Count; i++)
         {
             int pivot = i;
 
             <br>
             <br>
-            <input style="font-size: 18px" type="submit" asp-page-handler="TopicSelected" asp-route-index="@pivot" value="@Services.AllTopics[pivot].Author said: @Services.AllTopics[pivot].Title"/>
+            <input style="font-size: 18px" type="submit" asp-page-handler="TopicSelected" asp-route-index="@pivot" value="@Model.AllTopics[pivot].Author said: @Model.AllTopics[pivot].Title"/>
         }
     }
     </form>

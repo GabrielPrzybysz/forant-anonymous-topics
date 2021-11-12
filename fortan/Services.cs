@@ -7,13 +7,9 @@ using Newtonsoft.Json;
 
 namespace fortan
 {
-    public static class Services
+    public class Services
     {
-        
-        public static List<Topic> AllTopics;
-        
-        public static Topic SelectedTopic;
-        public static async Task<List<Topic>> GetAllTopics()
+        public async Task<List<Topic>> GetAllTopics()
         {
             WebRequest request = WebRequest.Create ("url");
             request.Method = "POST";
@@ -41,7 +37,35 @@ namespace fortan
             return topics;
         }
         
-        public static async Task PutTopic(Topic newTopic)
+        public async Task<Topic> GetSingleTopic(string id)
+        {
+            WebRequest request = WebRequest.Create ("url");
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.Headers.Add("x-api-key","key");
+            
+            using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+            {
+                string json = "{\"Id\":\"" + id + "\"}";
+                await streamWriter.WriteAsync(json);
+            }
+
+            WebResponse response = await request.GetResponseAsync();
+
+            Topic topic;
+            
+            using (StreamReader reader = new StreamReader(response.GetResponseStream() ?? throw new InvalidOperationException()))
+            {
+                string responseString = await reader.ReadToEndAsync();
+                topic = JsonConvert.DeserializeObject<Topic>(responseString);
+            }
+            
+            response.Close();
+
+            return topic;
+        }
+        
+        public async Task PutTopic(Topic newTopic)
         {
             WebRequest request = WebRequest.Create ("url");
             request.Method = "POST";
@@ -57,16 +81,16 @@ namespace fortan
             await request.GetResponseAsync();
         }
         
-        public static async Task Comment()
+        public async Task Comment(string id, List<string> comments)
         {
-            WebRequest request = WebRequest.Create ("URL");
+            WebRequest request = WebRequest.Create ("url");
             request.Method = "POST";
             request.ContentType = "application/json";
-            request.Headers.Add("x-api-key","KEY");
+            request.Headers.Add("x-api-key","key");
             
             using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
             {
-                string json = "{\"Id\":\"" + SelectedTopic.Id + "\", \"Comments\":" + JsonConvert.SerializeObject(SelectedTopic.Comments) + "}";
+                string json = "{\"Id\":\"" + id + "\", \"Comments\":" + JsonConvert.SerializeObject(comments) + "}";
                 await streamWriter.WriteAsync(json);
             }
 

@@ -17,6 +17,7 @@ namespace fortan.Pages
 
         public IndexModel(ILogger<IndexModel> logger)
         {
+            _services = new Services();
             _logger = logger;
         }
 
@@ -28,28 +29,29 @@ namespace fortan.Pages
         
         [BindProperty]
         public string Text { get; set; } = "";
-        
 
+        public List<Topic> AllTopics;
+        
+        private Services _services;
 
         
         public async Task OnGet()
         {
-            Services.AllTopics = await Services.GetAllTopics();
+            AllTopics = await _services.GetAllTopics();
         }
 
         public async Task<ActionResult> OnPost()
         {
             string id = Guid.NewGuid().ToString("N");
-            await Services.PutTopic(new Topic(id, Nickname, Title, Text, new List<string>()));
+            await _services.PutTopic(new Topic(id, Nickname, Title, Text, new List<string>()));
 
             return RedirectToPage("/Index");
         }
 
-        public ActionResult OnPostTopicSelected(int index)
+        public async Task<ActionResult> OnPostTopicSelected(int index)
         {
-            Services.SelectedTopic = Services.AllTopics[index];
-            
-            return RedirectToPage("/TopicView");
+            AllTopics = await _services.GetAllTopics();
+            return RedirectToPage("/TopicView",  new {id = AllTopics[index].Id});
         }
     }
 }
