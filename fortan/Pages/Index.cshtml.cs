@@ -40,7 +40,7 @@ namespace fortan.Pages
         public async Task<ActionResult> OnPost()
         {
             string id = Guid.NewGuid().ToString("N");
-            await Services.PutTopic(new Topic(id, Nickname, Title, Text));
+            await Services.PutTopic(new Topic(id, Nickname, Title, Text, new List<string>()));
 
             return RedirectToPage("/Index");
         }
