@@ -14,12 +14,15 @@
 <body>
 <div>
     <h1>@Model.SelectedTopic.Title</h1>
-
+    <br>
+    <h4>@Model.SelectedTopic.Text</h4>
+    
+    
     <br>
     <br>
     @foreach (string comment in @Model.SelectedTopic.Comments)
     {
-        <h5> Anonymous said: @comment </h5>
+        <h5 style="color: red"> Anonymous said: @comment </h5>
         <br>
         <br>
     }

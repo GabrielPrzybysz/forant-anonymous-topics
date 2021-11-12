@@ -3,39 +3,40 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<body>
 
 <div class="text-center">
-    <h1 class="display-4">4Tan</h1>
+    <b><h1 class="display-4" style="color: #bfc7cf">Anonymous Topic</h1></b>
     <br>
     <br>
 </div>
 
-<form method="post">
+<form method="post" style="display: inline-grid">
 
-    <input class="form-control form-control-lg" type="text" asp-for="Nickname" placeholder="Your Nick">
-    <br>
-    <br>
-    <input class="form-control" type="text" asp-for="Title" placeholder="Title">
-    <br>
-    <br>
-    <textarea class="form-control" asp-for="Text" rows="5" placeholder="Talk about your topic"></textarea>
-    <br>
-    <br>
+    <div style="text-align: center; align-content: center" >
+        <input style="width: 100%; color: black !important;" class="form-control form-control-lg" type="text" asp-for="Nickname" placeholder="Your Nick">
+        <br>
+        <input style="width: 100%; color: black !important;" class="form-control" type="text" asp-for="Title" placeholder="Title">
+        <br>
+        <textarea style="width: 100%; color: black !important;" class="form-control" asp-for="Text" rows="10" placeholder="Talk about your topic"></textarea>
+        <br>
+    </div>
     
-    <input type="submit" class="btn btn-primary" value="Send topic">
+    <input type="submit" class="btn btn-primary" style="background-color: #21262d !important; color: #bfc7cf !important;" value="Send topic">
 </form>
 
-<div style="display: inline-block">
+<div style="display: inline-grid; margin-left: 10%;">
     <form METHOD="post">
-    @{
-        for (int i = 0; i < @Model.AllTopics.Count; i++)
-        {
-            int pivot = i;
-
-            <br>
-            <br>
-            <input style="font-size: 18px" type="submit" asp-page-handler="TopicSelected" asp-route-index="@pivot" value="@Model.AllTopics[pivot].Author said: @Model.AllTopics[pivot].Title"/>
+        @{
+            for (int i = 0; i < @Model.AllTopics.Count; i++)
+            {
+                int pivot = i;
+                <input href="" style="font-size: 22px; background-color: transparent; border: 0 !important; color: #1b6ec2;" type="submit" asp-page-handler="TopicSelected" asp-route-index="@pivot" value="----> @Model.AllTopics[pivot].Author said: @Model.AllTopics[pivot].Title"/>
+                <br>
+                <br>
+            }
         }
-    }
     </form>
 </div>
+
+</body>
