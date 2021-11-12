@@ -1,5 +1,6 @@
 import json
 import boto3
+import botocore
 
 dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 table = dynamodb.Table('TABLE_NAME')
@@ -7,8 +8,13 @@ table = dynamodb.Table('TABLE_NAME')
 
 def lambda_handler(event, context):
 
-    remove_all()
-    return send_response(200)
+    try:
+        remove_all()
+        return send_response(200)
+
+    except botocore.exceptions.ClientError as error:
+        print(error)
+        return send_response(502)
 
 def send_response(status):
     return {
