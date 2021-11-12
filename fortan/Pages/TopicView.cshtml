@@ -1,0 +1,37 @@
+﻿@page
+@model fortan.Pages.TopicView
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.SelectedTopic.Title</title>
+</head>
+<body>
+<div>
+    <h1>@Model.SelectedTopic.Title</h1>
+
+    <br>
+    <br>
+    @foreach (string comment in @Model.SelectedTopic.Comments)
+    {
+        <h3> Anonymous said: @comment </h3>
+        <br>
+        <br>
+    }
+
+    <form method="post">
+        <br>
+        <br>
+        <textarea class="form-control" asp-for="Comment" rows="5" placeholder="Talk about the topic"></textarea>
+        <br>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Comment">
+    </form>
+</div>
+</body>
+</html>

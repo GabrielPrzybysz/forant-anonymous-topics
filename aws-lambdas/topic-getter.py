@@ -33,7 +33,3 @@ def get_all_topics_titles():
     return titles
 
 
-def get_single_topic(id):
-    topic = table.get_item(Key={'Id': id})
-
-    return topic

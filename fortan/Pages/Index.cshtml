@@ -26,12 +26,16 @@
 </form>
 
 <div style="display: inline-block">
+    <form METHOD="post">
     @{
-        for (int i = 0; i < @Model.AllTopics.Count; i++)
+        for (int i = 0; i < @Services.AllTopics.Count; i++)
         {
+            int pivot = i;
+
             <br>
             <br>
-            <a style="font-size: 18px" href="" onclick="alert(1)">@Model.AllTopics[i].Author said: @Model.AllTopics[i].Title</a>
+            <input style="font-size: 18px" type="submit" asp-page-handler="TopicSelected" asp-route-index="@pivot" value="@Services.AllTopics[pivot].Author said: @Services.AllTopics[pivot].Title"/>
         }
     }
+    </form>
 </div>

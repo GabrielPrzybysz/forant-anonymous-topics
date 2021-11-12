@@ -30,11 +30,11 @@ namespace fortan.Pages
         public string Text { get; set; } = "";
         
 
-        public List<Topic> AllTopics;
+
         
         public async Task OnGet()
         {
-            AllTopics = await Services.GetAllTopics();
+            Services.AllTopics = await Services.GetAllTopics();
         }
 
         public async Task<ActionResult> OnPost()
@@ -43,6 +43,13 @@ namespace fortan.Pages
             await Services.PutTopic(new Topic(id, Nickname, Title, Text, new List<string>()));
 
             return RedirectToPage("/Index");
+        }
+
+        public ActionResult OnPostTopicSelected(int index)
+        {
+            Services.SelectedTopic = Services.AllTopics[index];
+            
+            return RedirectToPage("/TopicView");
         }
     }
 }
