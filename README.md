@@ -1,10 +1,9 @@
 
 **Author**: Gabriel Przybysz Gonçalves Júnior - Backend Programmer <br>
-**Github**: [https://github.com/GabrielPrzybysz/fortan-forum](https://github.com/GabrielPrzybysz/fortan-forum)
 
 # **How I created my personal 4chan**
 
-Fortan is based/inspired by the famous 4Chan. In it, users post random topics anonymously, where the newest ones are above the old ones. However, on Fortan, daily, topics are automatically deleted. An interface is simple and, image upload is not allowed. Creating it was 100% free for testing (Using the AWS Cloud's free tier services.)
+Forant Anonymous Topics is based/inspired by the famous 4Chan. In it, users post random topics anonymously, where the newest ones are above the old ones. However, on Forant Anonymous Topics, daily, topics are automatically deleted. An interface is simple and, image upload is not allowed. Creating it was 100% free for testing (Using the AWS Cloud's free tier services.)
 
 # Flowchart and overview
 The application was created using ASP.NET, which allows the creation of dynamic pages, together with AWS Cloud, allowing the creation of REST APIs (API Gateway), a NoSQL database (DynamoDB), and Lambdas (Python 3.8). The application's core is the data requests for the API Gateway using the Services.cs class. The REST APIs make a call to a specific lambda of put, get, or comment. With the information received, it is possible to create dynamic pages, listing comments, topics, authors... Using a Topic object, which shapes the elements brought from the database, which has the following structure:
@@ -101,7 +100,7 @@ To create the lambdas follow these steps:
 
 ### Topic-Getter
 In this lambda we can have two different types of responses. The first one, sent a
-“Id = /” in the request body, to receive all topics. The second sent a valid id thus receiving a specific topic. The code can be seen at: https://github.com/GabrielPrzybysz/fortan-forum/blob/main/aws-lambdas/topic-getter.py
+“Id = /” in the request body, to receive all topics. The second sent a valid id thus receiving a specific topic. The code can be seen at: https://github.com/GabrielPrzybysz/forant-anonymous-topics/blob/main/aws-lambdas/topic-getter.py
 
 ### Topic-Setter
 It receives the following object serialized by the Newtonsoft library in its body:
