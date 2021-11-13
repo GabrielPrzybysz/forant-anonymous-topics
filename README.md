@@ -1,5 +1,5 @@
 
-**Criador**: Gabriel Przybysz Gonçalves Júnior - Backend Programmer <br>
+**Author**: Gabriel Przybysz Gonçalves Júnior - Backend Programmer <br>
 **Github**: [https://github.com/GabrielPrzybysz/fortan-forum](https://github.com/GabrielPrzybysz/fortan-forum)
 
 # **How I created my personal 4chan**
