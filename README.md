@@ -1,17 +1,13 @@
 ---
 layout: post
-title: How I created a chan forum
+title: How I Created A Chan Forum
 date: 2021-11-12 20:32:20 +0300
 img: 4ant.jpg 
 tags: [C#, AWS Cloud]
 ---
 
-# Intro
+# **Intro**
 This post is intended to share an experiment I performed trying to create a chan forum. As a personal goal, I had the idea to build everything in just three days.
-
-
-# **How I created a chan forum**
-
 Forant Anonymous Topics is based/inspired by the famous 4Chan. In it, users post random topics anonymously, where the newest ones are above the old ones. However, on Forant Anonymous Topics, daily, topics are automatically deleted. The interface is simple and, image upload is not allowed. Creating it was 100% free for testing (Using the AWS Cloud's free tier services.)
 
 # Flowchart and overview
