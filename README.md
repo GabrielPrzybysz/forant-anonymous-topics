@@ -1,3 +1,5 @@
+Documented by Marcos Santos
+
 ---
 layout: post
 title: How I Created A Chan Forum
