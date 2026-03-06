@@ -1,12 +1,3 @@
-Documented by Marcos Santos
-
----
-layout: post
-title: How I Created A Chan Forum
-date: 2021-11-12 20:32:20 +0300
-img: 4ant.jpg 
-tags: [C#, AWS Cloud]
----
 
 # **Intro**
 This post is intended to share an experiment I performed trying to create a chan forum. As a personal goal, I had the idea to build everything in just three days.
